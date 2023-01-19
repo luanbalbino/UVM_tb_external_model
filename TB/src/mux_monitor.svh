@@ -31,18 +31,25 @@ class mux_monitor extends uvm_monitor;
     endfunction
   
     virtual task run_phase(uvm_phase phase);
+        super.run_phase(phase);
+        fork
+          get_transaction(phase);
+        join
+        
+    endtask
+
+    virtual task get_transaction(uvm_phase phase);
         forever begin
-        #10;
-        t.a = aif.a;
-        t.b = aif.b;
-        t.c = aif.c;
-        t.d = aif.d;
-        t.sel = aif.sel;
-        t.y = aif.y;
-       //`uvm_info("MON", $sformatf("Data send to Scoreboard a : %0d , b : %0d, c : %0d, d : %0d, sel : %0d and y : %0d", t.a,t.b,t.c, t.d, t.sel,t.y), UVM_NONE);
-        send.write(t);
-        send_cov.write(t);
-        #10;
-      end
-      endtask
+          #10;
+          t.a = aif.a;
+          t.b = aif.b;
+          t.c = aif.c;
+          t.d = aif.d;
+          t.sel = aif.sel;
+          t.y = aif.y;
+          send.write(t);
+          send_cov.write(t);
+          #10;
+        end
+    endtask
 endclass: mux_monitor

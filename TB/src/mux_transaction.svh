@@ -25,7 +25,7 @@ class mux_transaction extends uvm_sequence_item;
   rand bit [3:0] c;
   rand bit [3:0] d;
   rand bit [1:0] sel;
-  bit [4:0] y;
+  rand bit [4:0] y;
 
  // constraint range_a{a < 6;}
   

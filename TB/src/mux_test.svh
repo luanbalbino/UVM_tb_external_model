@@ -15,8 +15,8 @@ class mux_test extends uvm_test;
 		super.new(inst, parent);
 	endfunction
   
-mux_sequences gen;
-mux_env e;
+  mux_sequences gen;
+  mux_env e;
   
 	virtual function void build_phase(uvm_phase phase);
       super.build_phase(phase);
@@ -27,8 +27,7 @@ mux_env e;
     virtual task run_phase(uvm_phase phase);
       phase.raise_objection(this);
       gen.start(e.a.seqr);
-      #10;
       phase.drop_objection(this);
     endtask
   
-endclass
+endclass : mux_test

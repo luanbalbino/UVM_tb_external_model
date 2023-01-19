@@ -22,7 +22,7 @@ class mux_refmod extends uvm_component;
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-       // tr_out = mux_transaction::type_id::create("tr_out", this);
+        tr_out = mux_transaction::type_id::create("tr_out", this);
     endfunction: build_phase
 
     // to call some features in parallel, if needed
@@ -35,10 +35,9 @@ class mux_refmod extends uvm_component;
 
     task refmod_task();
         forever begin
-            @begin_refmodtask;
-            tr_out = mux_transaction::type_id::create("tr_out", this);
+            @(begin_refmodtask);
             tr_out.y = my_mux(tr_in.a, tr_in.b, tr_in.c, tr_in.d, tr_in.sel);
-            #10;
+            #20;
             out.write(tr_out);
         end
     endtask : refmod_task

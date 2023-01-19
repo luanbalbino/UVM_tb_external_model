@@ -43,6 +43,6 @@ class mux_scoreboard extends uvm_scoreboard;
   endfunction : connect_phase
 
   
-endclass
+endclass : mux_scoreboard
 
 

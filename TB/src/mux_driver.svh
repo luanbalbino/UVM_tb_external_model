@@ -35,7 +35,7 @@ class mux_driver extends uvm_driver #(mux_transaction);
         aif.c <= t.c;
         aif.d <= t.d;
         aif.sel <= t.sel;
-        `uvm_info("DRV", $sformatf("Trigger DUT a: %0d, b: %0d, c: %0d e d: %0d", t.a, t.b, t.c, t.d), UVM_NONE);
+        `uvm_info("DRV", $sformatf("Trigger DUT a: %0d, b: %0d, c: %0d, d: %0d e SEL = %0d", t.a, t.b, t.c, t.d, t.sel), UVM_NONE);
         seq_item_port.item_done();
         #10;
       end
