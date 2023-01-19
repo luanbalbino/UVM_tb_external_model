@@ -10,6 +10,7 @@ package resources_mux;
     `include "./mux_sequences.svh"
     `include "./mux_driver.svh"
     `include "./mux_monitor.svh"
+    `include "./mux_refmod.svh"
     `include "./mux_scoreboard.svh"
     `include "./mux_agent.svh"
     `include "./mux_cov.svh"

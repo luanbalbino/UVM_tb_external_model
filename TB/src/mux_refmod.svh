@@ -37,7 +37,7 @@ class mux_refmod extends uvm_component;
         forever begin
             @begin_refmodtask;
             tr_out = mux_transaction::type_id::create("tr_out", this);
-            tr_out.result = my_mux(tr_in.a, tr_in.b, tr_in.c, tr_in.d, tr_in.sel);
+            tr_out.y = my_mux(tr_in.a, tr_in.b, tr_in.c, tr_in.d, tr_in.sel);
             #10;
             out.write(tr_out);
         end

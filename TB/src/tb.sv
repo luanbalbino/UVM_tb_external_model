@@ -15,7 +15,7 @@ module tb_mux;
 
   mux_if aif();
   
-  mux dut (.a(aif.a), .b(aif.b), .c(aif.c), .d(aif.d) , .sel(aif.sel), .y(aif.y));
+  mux my_dut (.a(aif.a), .b(aif.b), .c(aif.c), .d(aif.d) , .sel(aif.sel), .y(aif.y));
 
     initial begin 
     uvm_config_db #(virtual mux_if)::set(null, "uvm_test_top.e.a*","aif",aif);
