@@ -20,7 +20,7 @@ class mux_scoreboard extends uvm_scoreboard;
   mux_refmod reference;
   comp_type comp;
 
-  uvm_analysis_port #(T) ap_comp;
+  uvm_analysis_port #(T) ap_comp; 
   uvm_analysis_port #(mux_transaction) ap_rfm;
   
   function new(input string path = "mux_scoreboard", uvm_component parent = null);

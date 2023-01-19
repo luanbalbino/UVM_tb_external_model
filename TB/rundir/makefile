@@ -1,18 +1,25 @@
 #compiler 
 PATHS = +incdir+../../RTL/ \
         +incdir+../src/
+
 XRUN=xrun -coverage functional  -sv -covoverwrite
+
 COMP_FLAGS= -sysv -64 -debug -linedebug -classlinedebug -access rwc #-sysv -debug -LINEDEBUG
+
 UVM_FLAGS= -uvm -uvmlinedebug +UVM_NO_RELNOTES #-uvm +UVM_NO_RELNOTES
+
 DUT = ../../RTL/mux.sv
+
 PKG = ../src/resources_mux.sv
+
 TOP = ../src/tb.sv
 
+MODEL = ../src/external.cpp
+
 run:
-	@echo This should run testbench code
-	$(XRUN) $(PATHS) $(COMP_FLAGS) $(UVM_FLAGS) $(DUT) $(PKG) $(TOP)
+	@g++ -g -fPIC -Wall -std=c++0x $(MODEL) -shared -o test.so
+	$(XRUN) $(PATHS) $(COMP_FLAGS) $(UVM_FLAGS) $(PKG) $(DUT)  $(TOP) -sv_lib test.so +UVM_PHASE_TRACE
 gui:
-	@echo This should run testbench code
 	$(XRUN) $(PATHS) $(COMP_FLAGS) $(UVM_FLAGS) $(DUT) $(PKG) $(TOP) -gui
 
 help:
