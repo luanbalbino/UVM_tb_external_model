@@ -9,7 +9,7 @@
 class mux_env extends uvm_env;
   `uvm_component_utils(mux_env)
 	
-    function new(input string inst = "ENV", uvm_component c);
+    function new(input string inst = "mux_env", uvm_component c);
 		super.new(inst, c);
 	endfunction
   
@@ -27,7 +27,8 @@ class mux_env extends uvm_env;
     virtual function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
       a.send_cov.connect(cov.analysis_export);
-      a.send.connect(s.recv);
+      a.send.connect(s.ap_rfm);
+      a.send.connect(s.ap_comp);
     endfunction
   
 endclass: mux_env
