@@ -24,21 +24,6 @@ class mux_scoreboard extends uvm_scoreboard;
       tr = mux_transaction::type_id::create("tr");
     endfunction
   
-  virtual function void write(input mux_transaction t);
-  tr = t;
-  `uvm_info("SCO", $sformatf("Data rcvd from monitor a: %0d, b: %0d, c: %0d, d: %0d, sel: %0d e y: %0d", tr.a,tr.b, tr.c, tr.d, tr.sel, tr.y), UVM_NONE);
-  
-  	if(tr.y == tr.a && tr.sel == 0)
-    	`uvm_info("SCO", $sformatf("Test passed with SEL = %0d", tr.sel), UVM_NONE)
-    else if (tr.y == tr.b && tr.sel == 1) 
-	   `uvm_info("SCO", $sformatf("Test passed with SEL = %0d", tr.sel), UVM_NONE)
-    else if (tr.y == tr.c && tr.sel == 2) 
-	    `uvm_info("SCO", $sformatf("Test passed with SEL = %0d", tr.sel), UVM_NONE)
-    else if (tr.y == tr.d && tr.sel == 3) 
-	    `uvm_info("SCO", $sformatf("Test passed with SEL = %0d", tr.sel), UVM_NONE)
-  	else
-   		`uvm_info("SCO", "Test failed", UVM_NONE);
-  endfunction
   
 endclass
 
