@@ -19,6 +19,7 @@ module tb_mux;
 
     initial begin 
     uvm_config_db #(virtual mux_if)::set(null, "uvm_test_top.e.a*","aif",aif);
+    $set_coverage_db_name("database_name");
     run_test("mux_test");
     end
 
