@@ -26,7 +26,7 @@ class mux_env extends uvm_env;
   
     virtual function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
-      a.send_cov.connect(cov.analysis_export);
+      a.send.connect(cov.analysis_export);
       a.send.connect(s.send_sco_refmod);
     endfunction
   

@@ -11,7 +11,7 @@ class mux_monitor extends uvm_monitor;
   `uvm_component_utils(mux_monitor)
   
     uvm_analysis_port #(mux_transaction) send;
-    uvm_analysis_port #(mux_transaction) send_cov;
+    //uvm_analysis_port #(mux_transaction) send_cov;
     
     mux_transaction t;
     virtual mux_if aif;
@@ -19,7 +19,7 @@ class mux_monitor extends uvm_monitor;
     function new(string path = "mux_monitor", uvm_component parent = null);
         super.new(path, parent); //just a constructor
         send = new("send", this);
-        send_cov = new("send_cov", this);
+       // send_cov = new("send_cov", this);
     endfunction
   
 
@@ -48,7 +48,7 @@ class mux_monitor extends uvm_monitor;
           t.sel = aif.sel;
           t.y = aif.y;
           send.write(t);
-          send_cov.write(t);
+          //send_cov.write(t);
         end
     endtask
 endclass: mux_monitor

@@ -33,9 +33,13 @@ class mux_transaction extends uvm_sequence_item;
     super.new(path); //just a constructor for the transactions
   endfunction
   
+    //function string convert2string();
+    //  return $sformatf("{data = %d}",data);
+    //endfunction
+
 // registering variables in the factory pattern - this way it is allowed to use functions like print()
   `uvm_object_utils_begin(mux_transaction);
-  `uvm_field_int(a, UVM_DEFAULT);
+  `uvm_field_int(a, UVM_DEFAULT); //|UVM_NOCOMPARE
   `uvm_field_int(b, UVM_DEFAULT);
   `uvm_field_int(c, UVM_DEFAULT);
   `uvm_field_int(d, UVM_DEFAULT);

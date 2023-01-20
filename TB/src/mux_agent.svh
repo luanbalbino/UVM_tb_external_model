@@ -36,6 +36,7 @@ class mux_agent extends uvm_agent;
     super.connect_phase(phase);
     d.seq_item_port.connect(seqr.seq_item_export);
     m.send.connect(this.send);
-    m.send_cov.connect(this.send_cov);
+    //m.send_cov.connect(this.send_cov);
+    //m.send_cov.connect(this.send);
   endfunction
 endclass
