@@ -28,16 +28,15 @@ class mux_driver extends uvm_driver #(mux_transaction);
     
     virtual task run_phase(uvm_phase phase);
       forever begin
-      
         seq_item_port.get_next_item(t); // assign the variables to interface
         aif.a <= t.a;
         aif.b <= t.b;
         aif.c <= t.c;
         aif.d <= t.d;
         aif.sel <= t.sel;
-        `uvm_info("DRV", $sformatf("Trigger DUT a: %0d, b: %0d, c: %0d, d: %0d e SEL = %0d", t.a, t.b, t.c, t.d, t.sel), UVM_NONE);
+        //`uvm_info("DRV", $sformatf("Trigger DUT a: %0d, b: %0d, c: %0d, d: %0d e SEL = %0d", t.a, t.b, t.c, t.d, t.sel), UVM_NONE);
         seq_item_port.item_done();
-        #10;
+        #5;
       end
       endtask
 endclass: mux_driver

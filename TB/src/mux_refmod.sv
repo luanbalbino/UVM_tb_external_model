@@ -9,15 +9,13 @@ class mux_refmod extends uvm_component;
     mux_transaction tr_in;
     mux_transaction tr_out;
 
-    // Porta imp para receber os dados vindos do scoreboard (necessario implementar função write)
-    uvm_analysis_imp #(mux_transaction, mux_refmod) in;
-    // porta para enviar os dados resultantes para fora da classe (um comparador dentro do scoreboard, inicialmente.)
-    uvm_analysis_port #(mux_transaction) out;
+    uvm_analysis_imp #(mux_transaction, mux_refmod) refmod_in;
+    uvm_analysis_port #(mux_transaction) refmod_out;
 
     function new(string name = "mux_refmod", uvm_component parent);
         super.new(name, parent);
-        in = new("in", this);
-        out = new("out", this);
+        refmod_in = new("refmod_in", this);
+        refmod_out = new("refmod_out", this);
     endfunction : new
 
     virtual function void build_phase(uvm_phase phase);
@@ -37,15 +35,20 @@ class mux_refmod extends uvm_component;
         forever begin
             @(begin_refmodtask);
             tr_out.y = my_mux(tr_in.a, tr_in.b, tr_in.c, tr_in.d, tr_in.sel);
-            #20;
-            out.write(tr_out);
+            //tr_out.a = 8;
+            `uvm_info("[my_mux.cpp", $sformatf("saida my_mux: %0d", tr_out.y), UVM_LOW)
+            `uvm_info("[obj", $sformatf("a: %0d b: %0d c: %0d d: %0d sel: %0d", tr_out.a, tr_out.b, tr_out.c, tr_out.d, tr_out.sel), UVM_LOW)
+            refmod_out.write(tr_out);
+            //#5;
         end
     endtask : refmod_task
 
     virtual function write (mux_transaction t);
         tr_in = mux_transaction::type_id::create("tr_in", this);
         tr_in.copy(t);
-       -> begin_refmodtask;
+        tr_out.copy(tr_in);
+        `uvm_info("REFMOD", $sformatf("a: %0d b: %0d c: %0d d: %0d sel: %0d", tr_in.a, tr_in.b, tr_in.c, tr_in.d, tr_in.sel), UVM_LOW)
+        -> begin_refmodtask;
     endfunction: write
 
 
