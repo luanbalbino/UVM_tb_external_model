@@ -23,11 +23,13 @@ The makefile placed in the `TB/rundir/` directory has the following options:
 
 - `make run`: Run the project with Xcelium Logic Simulator from Cadence;
 - `make gui`: Run the simulation using Simvision's GUI.
+- `make cov`:  Run the project with Xcelium Logic Simulator from Cadence with coverage report in prompt.
 - `make help`: a tip for activate the tools that allow the simulation
 - `make clean`: remove some extensions
 -
 
-example: make run TB=tb
+example: by default, the name of the testbench used here is 'tb', however this can be changed to any testbench of interest.
+- `make run` or `make run TB=ANY_TESTBENCH_TOP`
 
 
 ## Author
