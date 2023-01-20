@@ -17,32 +17,30 @@ class mux_scoreboard extends uvm_scoreboard;
   typedef mux_transaction T;
   typedef uvm_in_order_class_comparator #(T) comp_type;
 
-  mux_refmod reference;
+  mux_refmod refmod;
   comp_type comp;
 
-  uvm_analysis_port #(T) ap_comp; 
-  uvm_analysis_port #(mux_transaction) ap_rfm;
+  uvm_analysis_export #(mux_transaction) send_sco_refmod;
+
   
   function new(input string path = "mux_scoreboard", uvm_component parent = null);
     super.new(path, parent); //just a constructor
-    ap_comp = new("ap_comp", this);
-    ap_rfm = new("ap_rfm", this);
+    send_sco_refmod = new("send_sco_refmod", this);
   endfunction: new
   
 	virtual function void build_phase(uvm_phase phase);
       super.build_phase(phase);
-      reference = mux_refmod::type_id::create("reference", this);
+      refmod = mux_refmod::type_id::create("refmod", this);
       comp = comp_type::type_id::create("comp", this);
   endfunction : build_phase
   
   virtual function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
-    ap_comp.connect(comp.before_export);
-    ap_rfm.connect(reference.in);
-    reference.out.connect(comp.after_export);
+    send_sco_refmod.connect(comp.before_export);
+    send_sco_refmod.connect(refmod.refmod_in);
+    refmod.refmod_out.connect(comp.after_export);
   endfunction : connect_phase
-
-  
+ 
 endclass : mux_scoreboard
 
 

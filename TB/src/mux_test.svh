@@ -27,6 +27,7 @@ class mux_test extends uvm_test;
     virtual task run_phase(uvm_phase phase);
       phase.raise_objection(this);
       gen.start(e.a.seqr);
+      #5;
       phase.drop_objection(this);
     endtask
   

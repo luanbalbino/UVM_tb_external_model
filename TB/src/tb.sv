@@ -26,6 +26,8 @@ module tb_mux;
     initial begin
         $dumpfile("dump.vcd");
         $dumpvars;
+        #5000;
+        $finish();
     end
   
 endmodule
