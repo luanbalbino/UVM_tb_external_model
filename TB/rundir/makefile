@@ -26,11 +26,18 @@ gui:
 help:
 	@echo '# Execute: cds # before compiling the project'
 
+cov:
+	@echo coverage
+	@g++ -g -fPIC -Wall -std=c++0x $(MODEL) -shared -o test.so
+	$(XRUN)  $(PATHS) $(COMP_FLAGS) $(UVM_FLAGS) $(DUT) $(PKG) $(TOP) -sv_lib test.so 
+	@imc -exec report_gen.sh
+	@cat report/coverage.rpt
+
 clean:
-	rm -rf xrun.history xrun.log xcelium.d dump.vcd 
-	rm -rf xrun.key waves.shm .simvision simvision5009.diag
-	rm -rf xcelium*
-	rm -rf *.shm
-	rm -rf .uvm*
-	rm -rf dump.*
-	rm -rf simvision*
+	@rm -rf xrun.history xrun.log xcelium.d dump.vcd 
+	@rm -rf xrun.key waves.shm .simvision simvision5009.diag
+	@rm -rf xcelium*
+	@rm -rf *.shm
+	@rm -rf .uvm*
+	@rm -rf dump.*
+	@rm -rf simvision*
