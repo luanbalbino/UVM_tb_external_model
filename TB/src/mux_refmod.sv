@@ -5,9 +5,7 @@ class mux_refmod extends uvm_component;
 
     event begin_refmodtask;
 
-    // Transações de entrada e saída do bloco (entrada: vinda do (monitor|scoreboard) / saída: indo para o comparador).
-    mux_transaction tr_in;
-    //mux_transaction tr_out;
+    mux_transaction transaction_refmod;
 
     uvm_analysis_imp #(mux_transaction, mux_refmod) refmod_in;
     uvm_analysis_port #(mux_transaction) refmod_out;
@@ -20,7 +18,6 @@ class mux_refmod extends uvm_component;
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        //tr_out = mux_transaction::type_id::create("tr_out", this);
     endfunction: build_phase
 
     // to call some features in parallel, if needed
@@ -34,19 +31,15 @@ class mux_refmod extends uvm_component;
     task refmod_task();
         forever begin
             @(begin_refmodtask);
-            tr_in.y = my_mux(tr_in.a, tr_in.b, tr_in.c, tr_in.d, tr_in.sel);
-            `uvm_info("[my_mux.cpp", $sformatf("saida my_mux: %0d", tr_in.y), UVM_LOW)
-            //`uvm_info("[obj", $sformatf("a: %0d b: %0d c: %0d d: %0d sel: %0d", tr_out.a, tr_out.b, tr_out.c, tr_out.d, tr_out.sel), UVM_LOW)
-            refmod_out.write(tr_in);
-            //#5;
+            transaction_refmod.y = my_mux(transaction_refmod.a, transaction_refmod.b, transaction_refmod.c, transaction_refmod.d, transaction_refmod.sel);
+            `uvm_info("MUX.cpp", $sformatf("saida do modelo: %0d", transaction_refmod.y), UVM_LOW)
+            refmod_out.write(transaction_refmod);
         end
     endtask : refmod_task
 
     virtual function write (mux_transaction t);
-        tr_in = mux_transaction::type_id::create("tr_in", this);
-        tr_in.copy(t);
-        //tr_out.copy(tr_in);
-        //`uvm_info("REFMOD", $sformatf("a: %0d b: %0d c: %0d d: %0d sel: %0d", tr_in.a, tr_in.b, tr_in.c, tr_in.d, tr_in.sel), UVM_LOW)
+        transaction_refmod = mux_transaction::type_id::create("transaction_refmod", this);
+        transaction_refmod.copy(t);
         -> begin_refmodtask;
     endfunction: write
 
