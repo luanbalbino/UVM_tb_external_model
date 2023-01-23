@@ -17,17 +17,16 @@ module tb_mux;
   
   mux my_dut (.a(aif.a), .b(aif.b), .c(aif.c), .d(aif.d) , .sel(aif.sel), .y(aif.y));
 
-    initial begin 
-    uvm_config_db #(virtual mux_if)::set(null, "uvm_test_top.e.a*","aif",aif);
-    $set_coverage_db_name("database_name");
-    run_test("mux_test");
-    end
-
-    initial begin
-        $dumpfile("dump.vcd");
-        $dumpvars;
-        #5000;
-        $finish();
-    end
+  initial begin 
+  uvm_config_db #(virtual mux_if)::set(null, "uvm_test_top.e.a*","aif",aif);
+  $set_coverage_db_name("database_name");
+  run_test("mux_test");
+  end
+  initial begin
+      $dumpfile("dump.vcd");
+      $dumpvars;
+      #5000;
+      $finish();
+  end
   
 endmodule

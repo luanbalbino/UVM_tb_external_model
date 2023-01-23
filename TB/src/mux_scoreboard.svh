@@ -10,10 +10,6 @@
 class mux_scoreboard extends uvm_scoreboard;
   `uvm_component_utils(mux_scoreboard)
   
-  /* essas portas precisam de ajuste
-  uvm_analysis_port #(mux_transaction) ap_comp;
-  */
-
   typedef mux_transaction T;
   typedef uvm_in_order_class_comparator #(T) comp_type;
 

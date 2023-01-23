@@ -14,7 +14,7 @@ class mux_driver extends uvm_driver #(mux_transaction);
     virtual mux_if aif; // add the interface into driver.
   
     function new(input string path = "mux_driver", uvm_component parent = null);
-    super.new(path, parent); 
+      super.new(path, parent); 
     endfunction
   
 
@@ -34,9 +34,9 @@ class mux_driver extends uvm_driver #(mux_transaction);
         aif.c <= t.c;
         aif.d <= t.d;
         aif.sel <= t.sel;
-        //`uvm_info("DRV", $sformatf("Trigger DUT a: %0d, b: %0d, c: %0d, d: %0d e SEL = %0d", t.a, t.b, t.c, t.d, t.sel), UVM_NONE);
+       `uvm_info("DRV", $sformatf("Data sent to interface a: %0d, b: %0d, c: %0d, d: %0d e SEL = %0d", t.a, t.b, t.c, t.d, t.sel), UVM_NONE);
         seq_item_port.item_done();
         #5;
       end
-      endtask
+    endtask
 endclass: mux_driver
