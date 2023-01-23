@@ -28,3 +28,4 @@ this can be changed to any testbench of interest.
 ## Author
 
 * **Luan da Silva Balbino** - [LuanBalbino](https://github.com/luanbalbino)
+* [Linkedin](https://www.linkedin.com/in/luan-balbino-92a26316b/)
