@@ -4,12 +4,9 @@ class mux_cov extends uvm_subscriber #(mux_transaction);
   event new_transaction_received;
   mux_transaction req;
 
-  covergroup c;
+  covergroup coverage_mux;
     option.per_instance = 1;
-   // option.at_least = 1;
-    coverpoint req.a{
-      bins a_0[15] = {[0:15]};
-    }
+    coverpoint req.a;
     coverpoint req.b;
     coverpoint req.c;
     coverpoint req.d;
@@ -18,12 +15,15 @@ class mux_cov extends uvm_subscriber #(mux_transaction);
     }
   
     cov_sel_a: cross req.sel, req.a;
+    cov_sel_b: cross req.sel, req.b;
+    cov_sel_c: cross req.sel, req.c;
+    cov_sel_d: cross req.sel, req.d;
   
   endgroup
 
   function new(string name = "mux_cov", uvm_component parent = null);
     super.new(name, parent);
-    c = new();
+    coverage_mux = new();
   endfunction: new
 
   function void build_phase(uvm_phase phase);
@@ -35,7 +35,7 @@ class mux_cov extends uvm_subscriber #(mux_transaction);
       fork  
         begin 
           @new_transaction_received;
-          c.sample();
+          coverage_mux.sample();
         end
       join
     end
