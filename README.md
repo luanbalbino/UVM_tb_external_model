@@ -17,7 +17,7 @@ It's part of my studies with some courses on UVM and SystemVerilog.
 UVM 1.2
 
 
-## 🛠️ Execute the project
+### 🛠️ Execute the project
 
 The makefile placed in the `TB/rundir/` directory has the following options:
 
@@ -28,7 +28,8 @@ The makefile placed in the `TB/rundir/` directory has the following options:
 - `make clean`: remove some extensions
 -
 
-example: by default, the name of the testbench used here is 'tb', however this can be changed to any testbench of interest.
+example: by default, the name of the testbench used here is 'tb', however 
+this can be changed to any testbench of interest.
 - `make run` or `make run TB=ANY_TESTBENCH_TOP`
 
 
