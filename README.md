@@ -16,7 +16,6 @@ The makefile placed in the `TB/rundir/` directory has the following options:
 - `make run`: Run the project with Xcelium Logic Simulator from Cadence;
 - `make gui`: Run the simulation using Simvision's GUI.
 - `make cov`:  Run the project with Xcelium Logic Simulator from Cadence with coverage report in prompt.
-- `make help`: a tip for activate the tools that allow the simulation
 - `make clean`: remove some extensions
 
 
