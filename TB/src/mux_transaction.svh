@@ -26,16 +26,14 @@ class mux_transaction extends uvm_sequence_item;
   rand bit [3:0] d;
   rand bit [1:0] sel;
   rand bit [4:0] y;
-
- // constraint range_a{a < 6;}
-  
+ 
   function new(input string path = "mux_transaction");
     super.new(path); //just a constructor for the transactions
   endfunction
   
-    //function string convert2string();
-    //  return $sformatf("{data = %d}",data);
-    //endfunction
+  function string convert2string();
+    return $sformatf("{a = %d} {b = %d} {c = %d} {d = %d} {sel = %d} {y = %d}",a, b, c, d, sel, y);
+  endfunction
 
 // registering variables in the factory pattern - this way it is allowed to use functions like print()
   `uvm_object_utils_begin(mux_transaction);
