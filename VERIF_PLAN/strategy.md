@@ -1,4 +1,4 @@
-# Strategy MUX4:1
+# Verification Strategy MUX4:1
 
 ## Establishing common ground - Strategy definitions
 ----------
@@ -30,7 +30,8 @@ The strategy for the verification plan to the mux block will cover the functiona
 
 ## Verification Tecnologies
 ----------
-The verification process will be executed by the simulation of the design in the Cadence XCelium Simulator.
+The verification process will be executed by the simulation of the design in the Cadence XCelium Simulator. 
+
 
 
 ## Verification Abstractions
