@@ -9,6 +9,6 @@
 | Coverage model Sanity test             | Testbench simulation build after coverage module  integration | Simulation finished without errors;     |  :white_check_mark:      |
 | Coverage model criteria fullfiled      | The reported coverage meets the coverage plan goals.          | Coverage report meet the coverage goal; |  :white_check_mark:      |
 | Development and integration of refmod  | Development and integration of a C refmod of mux.             | refmod implementation integrated;       |  :white_check_mark:      |
-|                                        |                                                               |                                         |                          |
+
 
 [Back to Main](readme.md)
