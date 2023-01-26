@@ -25,8 +25,10 @@ The verification strategy must accomplish the definition of three elements:
 ## Verification Requirements
 ----------
 The strategy for the verification plan to the mux block will cover the functional correctness for the following operations:
-*  Input selection
-*  Output range for each input
+*  Input selection: randomized input;
+*  Output range for each input(a,b,c,d);
+
+Also, a external refmod will be used to quantify the numbers of MATCH/MISMATCH output of the developed design; 
 
 ## Verification Tecnologies
 ----------

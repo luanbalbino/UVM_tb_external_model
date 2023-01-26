@@ -16,8 +16,8 @@ The testbench resources are divided in the following categories:
 * UVM structure:
     - Transaction: [mux_transaction](../TB/src/mux_transaction.svh);
     - Sequences: [mux_sequences](../TB/src/mux_sequences.svh);
-    - driver: [mux_driver](../TB/src/mux_driver.svh);
-    - monitor: [mux_monitor](../TB/src/mux_monitor.svh);
+    - Driver: [mux_driver](../TB/src/mux_driver.svh);
+    - Monitor: [mux_monitor](../TB/src/mux_monitor.svh);
     - Agent: [mux_agent](../TB/src/mux_agent.svh);
     - Scoreboard: [mux_scoreboard](../TB/src/mux_scoreboard.svh);
     - Environment: [mux_environment](../TB/src/mux_agent.svh);
