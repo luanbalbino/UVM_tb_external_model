@@ -10,6 +10,8 @@ class mux_cov extends uvm_subscriber #(mux_transaction);
     coverpoint req.b;
     coverpoint req.c;
     coverpoint req.d;
+    coverpoint req.y;
+    
     coverpoint req.sel {
       bins sel_0[4] = {[0:3]};
     }

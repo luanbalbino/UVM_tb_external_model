@@ -25,7 +25,7 @@ class mux_transaction extends uvm_sequence_item;
   rand bit [3:0] c;
   rand bit [3:0] d;
   rand bit [1:0] sel;
-  rand bit [4:0] y;
+  bit [3:0] y;
  
   function new(input string path = "mux_transaction");
     super.new(path); //just a constructor for the transactions
