@@ -35,7 +35,7 @@ class mux_driver extends uvm_driver #(mux_transaction);
         aif.d <= t.d;
         aif.en <= t.en;
         aif.sel <= t.sel;
-       `uvm_info("DRV", $sformatf("Data sent to interface a: %0d, b: %0d, c: %0d, d: %0d,  en: %0d e SEL = %0d", t.a, t.b, t.c, t.d, t.sel, t.en), UVM_NONE);
+       `uvm_info("DRV", $sformatf("Data sent to interface a: %0d, b: %0d, c: %0d, d: %0d,  SEL: %0d e en = %0d", t.a, t.b, t.c, t.d, t.sel, t.en), UVM_NONE);
         seq_item_port.item_done();
         #5;
       end

@@ -38,7 +38,7 @@ class mux_monitor extends uvm_monitor;
 
     virtual task get_transaction(uvm_phase phase);
         forever begin
-          #20;
+          #5;
           t.a = aif.a;
           t.b = aif.b;
           t.c = aif.c;
