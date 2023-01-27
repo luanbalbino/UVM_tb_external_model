@@ -18,10 +18,10 @@
 
 | Cross Coverpoints             | Description           | Coverage Goal | Minimum Hit Count | Coverage Status                                 |
 |-------------------------------|-----------------------|---------------|-------------------|-------------------------------------------------|
-| input a, input sel            | Input a, sel = 2'b00  |   100%        |        -          | <span style="color: green ;">**Covered**</span> |
-| input b, input sel            | Input b, sel = 2'b01  |   100%        |        -          | <span style="color: green ;">**Covered**</span> |
-| input c, input sel            | Input c, sel = 2'b10  |   100%        |        -          | <span style="color: green ;">**Covered**</span> |
-| input d, input sel            | Input d, sel = 2'b11  |   100%        |        -          | <span style="color: green ;">**Covered**</span> |
+| input a, input sel            | Input a, sel = 2'bXX  |   100%        |        -          | <span style="color: green ;">**Covered**</span> |
+| input b, input sel            | Input b, sel = 2'bXX  |   100%        |        -          | <span style="color: green ;">**Covered**</span> |
+| input c, input sel            | Input c, sel = 2'bXX  |   100%        |        -          | <span style="color: green ;">**Covered**</span> |
+| input d, input sel            | Input d, sel = 2'bXX  |   100%        |        -          | <span style="color: green ;">**Covered**</span> |
 
 
 
