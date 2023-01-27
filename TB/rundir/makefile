@@ -41,3 +41,4 @@ clean:
 	@rm -rf .uvm*
 	@rm -rf dump.*
 	@rm -rf simvision*
+	@rm -rf *.so

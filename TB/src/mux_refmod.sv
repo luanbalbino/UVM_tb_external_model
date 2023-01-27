@@ -1,4 +1,4 @@
-import "DPI-C" context function int my_mux(int a, int b, int c, int d, int sel);
+import "DPI-C" context function int my_mux(int a, int b, int c, int d, int sel, int en);
 
 class mux_refmod extends uvm_component;
     `uvm_component_utils(mux_refmod)
@@ -31,7 +31,7 @@ class mux_refmod extends uvm_component;
     task refmod_task();
         forever begin
             @(begin_refmodtask);
-            transaction_refmod.y = my_mux(transaction_refmod.a, transaction_refmod.b, transaction_refmod.c, transaction_refmod.d, transaction_refmod.sel);
+            transaction_refmod.y = my_mux(transaction_refmod.a, transaction_refmod.b, transaction_refmod.c, transaction_refmod.d,  transaction_refmod.sel, transaction_refmod.en);
             `uvm_info("MUX.cpp", $sformatf("saida do modelo: %0d", transaction_refmod.y), UVM_LOW)
             refmod_out.write(transaction_refmod);
         end
