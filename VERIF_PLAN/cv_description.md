@@ -9,7 +9,7 @@
 | c          | [3:0] input stream        | 100%          | -                   |    <span style="color: green ;">**Covered**</span>  |
 | d          | [3:0] input stream        | 100%          | -                   |    <span style="color: green ;">**Covered**</span>  |
 | sel        | [1:0] input selector      | 100%          | -                   |    <span style="color: green ;">**Covered**</span>  |
-| en         | [3:0] input module enable | 100%          | -                   |    <span style="color: green ;">**Covered**</span>  |
+| en         | input module enable       | 100%          | -                   |    <span style="color: green ;">**Covered**</span>  |
 | y          | [3:0] output              | 100%          | -                   |    <span style="color: green ;">**Covered**</span>  |
 
 
