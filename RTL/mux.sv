@@ -15,8 +15,12 @@ module mux
             2'b01: y = b;
             2'b10: y = c;
             2'b11: y = d;
-            default: y = 0;
+            //default: y = 0;
         endcase
-      end
+      end else 
+        begin
+          y = 0;
+        end
+      
     end
 endmodule
