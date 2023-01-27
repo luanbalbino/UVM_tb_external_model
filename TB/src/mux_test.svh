@@ -24,11 +24,15 @@ class mux_test extends uvm_test;
       e = mux_env::type_id::create("e", this);
     endfunction
   
-    virtual task run_phase(uvm_phase phase);
+  virtual function void end_of_elaboration_phase(uvm_phase phase);
+    uvm_top.print_topology();
+  endfunction
+
+  virtual task run_phase(uvm_phase phase);
       phase.raise_objection(this);
       gen.start(e.a.seqr);
       #5;
       phase.drop_objection(this);
-    endtask
+   endtask
   
 endclass : mux_test
