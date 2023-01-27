@@ -21,7 +21,8 @@ run:
 	$(XRUN) $(PATHS) $(COMP_FLAGS) $(UVM_FLAGS) $(PKG) $(DUT)  $(TOP) -sv_lib test.so 
 	
 gui:
-	$(XRUN) $(PATHS) $(COMP_FLAGS) $(UVM_FLAGS) $(DUT) $(PKG) $(TOP) -gui
+	@g++ -g -fPIC -Wall -std=c++0x $(MODEL) -shared -o test.so 
+	$(XRUN) $(PATHS) $(COMP_FLAGS) $(UVM_FLAGS) $(DUT) $(PKG) $(TOP) -gui -sv_lib test.so 
 
 help:
 	@echo '# Execute: cds # before compiling the project'
@@ -41,3 +42,4 @@ clean:
 	@rm -rf .uvm*
 	@rm -rf dump.*
 	@rm -rf simvision*
+	@rm -rf *.so

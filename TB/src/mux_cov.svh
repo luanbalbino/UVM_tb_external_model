@@ -12,15 +12,43 @@ class mux_cov extends uvm_subscriber #(mux_transaction);
     coverpoint req.d;
     coverpoint req.y;
     
+
+    // coverpoint req.b {
+    //  // bins bdiv2[] = item with (item % 2 == 0) ; 
+    //   ignore_bins unused_opcode = {0};   
+    // }
+
     coverpoint req.sel {
-      bins sel_0[4] = {[0:3]};
+      bins sel[4] = {[0:3]};
     }
   
     cov_sel_a: cross req.sel, req.a;
     cov_sel_b: cross req.sel, req.b;
     cov_sel_c: cross req.sel, req.c;
     cov_sel_d: cross req.sel, req.d;
+
+     cross req.en, req.y { bins cross_en_y = binsof(req.en) intersect {1}; }
   
+
+    // // cross req.en, req.y
+    // // {
+    // //   bins cross_en_y = binsof(req.en) intersect {1};
+    // // }
+
+    // cross req.en, req.sel, req.y
+    // {
+      
+    //   ignore_bins cross_rst_low = binsof(req.en) intersect {1}  &&  binsof(req.sel) intersect {2'b11} &&  !binsof(req.y) intersect {0}   ; 
+    
+    
+    // }
+
+    // // cross_en_sel3_y: cross req.en, req.sel, req.y
+    // // {
+    // //     illegal_bins  tests[] = 7'b111????;
+    // // }
+
+
   endgroup
 
   function new(string name = "mux_cov", uvm_component parent = null);

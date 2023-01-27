@@ -43,6 +43,7 @@ class mux_monitor extends uvm_monitor;
           t.b = aif.b;
           t.c = aif.c;
           t.d = aif.d;
+          t.en = aif.en;
           t.sel = aif.sel;
           t.y = aif.y;
           send.write(t);
