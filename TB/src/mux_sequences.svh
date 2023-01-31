@@ -19,9 +19,9 @@ class mux_sequences extends uvm_sequence #(mux_transaction);
   
 
     virtual task body();
-        t = mux_transaction::type_id::create("t"); // calling a constructor;
         repeat(50)
 		begin
+        t = mux_transaction::type_id::create("t"); // calling a constructor;
         start_item(t);               //send request and wait for wait_for_grant() flag
         assert(t.randomize());       // just randomize data from class transaction
         finish_item(t);
