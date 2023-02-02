@@ -39,10 +39,7 @@ class mux_refmod extends uvm_component;
         join
     endtask: run_phase
 
-    task refmod_task();
-        forever begin
-            @(begin_refmodtask);
-
+    task copy_task();
             // struct variables
             i_mux.a = transaction_refmod.a;
             i_mux.b = transaction_refmod.b;
@@ -50,8 +47,13 @@ class mux_refmod extends uvm_component;
             i_mux.d = transaction_refmod.d;
             i_mux.en = transaction_refmod.en;
             i_mux.sel = transaction_refmod.sel;
-            
-            
+    endtask : copy_task
+
+
+    task refmod_task();
+        forever begin
+            @(begin_refmodtask);
+            copy_task();           
             transaction_refmod.y = my_mux(i_mux);
             `uvm_info("MUX.cpp", $sformatf("saida do modelo: %0d", transaction_refmod.y), UVM_LOW)
             refmod_out.write(transaction_refmod);
