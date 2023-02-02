@@ -3,11 +3,12 @@ module mux
     // four bits simple mux with selection SEL
     input [3:0] a,b,c,d, 
     input [1:0] sel, 
-    input en,  
+    input en, 
+    input clk, 
     output reg [3:0] y 
   );
   
-  always@(*)
+  always@(clk)
     begin
       if (en) begin
         case(sel)

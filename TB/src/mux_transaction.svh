@@ -26,6 +26,7 @@ class mux_transaction extends uvm_sequence_item;
   rand bit [3:0] d;
   rand bit [1:0] sel;
   rand bit en;
+  //bit en;
   bit [3:0] y;
  
   function new(input string path = "mux_transaction");
@@ -35,6 +36,10 @@ class mux_transaction extends uvm_sequence_item;
   function string convert2string();
     return $sformatf("{a = %d} {b = %d} {c = %d} {d = %d} {sel = %d} {en = %d} {y = %d}",a, b, c, d, sel, en, y);
   endfunction
+  
+  //function string convert2string();
+  //  return $sformatf("{a = %d} {b = %d} {c = %d} {d = %d} {sel = %d}  {y = %d}",a, b, c, d, sel, y);
+  //endfunction
 
 // registering variables in the factory pattern - this way it is allowed to use functions like print()
   `uvm_object_utils_begin(mux_transaction);
