@@ -1,4 +1,13 @@
-import "DPI-C" context function int my_mux(int a, int b, int c, int d, int sel, int en);
+typedef struct {
+    int a;
+    int b;
+    int c;
+    int d;
+    int sel;
+    int en;
+} i_mux_struct;
+
+import "DPI-C" context function int my_mux(input i_mux_struct);
 
 class mux_refmod extends uvm_component;
     `uvm_component_utils(mux_refmod)
@@ -6,6 +15,8 @@ class mux_refmod extends uvm_component;
     event begin_refmodtask;
 
     mux_transaction transaction_refmod;
+
+    i_mux_struct i_mux;  
 
     uvm_analysis_imp #(mux_transaction, mux_refmod) refmod_in;
     uvm_analysis_port #(mux_transaction) refmod_out;
@@ -31,7 +42,17 @@ class mux_refmod extends uvm_component;
     task refmod_task();
         forever begin
             @(begin_refmodtask);
-            transaction_refmod.y = my_mux(transaction_refmod.a, transaction_refmod.b, transaction_refmod.c, transaction_refmod.d,  transaction_refmod.sel, transaction_refmod.en);
+
+            // struct variables
+            i_mux.a = transaction_refmod.a;
+            i_mux.b = transaction_refmod.b;
+            i_mux.c = transaction_refmod.c;
+            i_mux.d = transaction_refmod.d;
+            i_mux.en = transaction_refmod.en;
+            i_mux.sel = transaction_refmod.sel;
+            
+            
+            transaction_refmod.y = my_mux(i_mux);
             `uvm_info("MUX.cpp", $sformatf("saida do modelo: %0d", transaction_refmod.y), UVM_LOW)
             refmod_out.write(transaction_refmod);
         end
