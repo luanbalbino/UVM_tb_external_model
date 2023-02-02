@@ -52,7 +52,6 @@ class mux_refmod extends uvm_component;
             i_mux.b = transaction_refmod.b;
             i_mux.c = transaction_refmod.c;
             i_mux.d = transaction_refmod.d;
-            i_mux.en = transaction_refmod.en;
             i_mux.sel = transaction_refmod.sel;
     endtask : copy_input_task
 

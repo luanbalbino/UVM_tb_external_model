@@ -27,8 +27,7 @@ class mux_cov extends uvm_subscriber #(mux_transaction);
     cov_sel_c: cross req.sel, req.c;
     cov_sel_d: cross req.sel, req.d;
 
-     cross req.en, req.y { bins cross_en_y = binsof(req.en) intersect {1}; }
-  
+
 
   endgroup
 

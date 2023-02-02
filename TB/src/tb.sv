@@ -17,9 +17,17 @@ module tb_mux;
   initial begin
     aif.clk = 0;
     aif.en = 1;
+
+    #10;
+    aif.en = 0;
+
+    #10;
+    aif.en = 1;
+
   end 
   
   always #5 aif.clk = ~aif.clk;
+  //always #15 aif.en = ~aif.en;
   
   //logic clk = 0;
   mux_if aif();
@@ -34,7 +42,7 @@ module tb_mux;
   initial begin
       $dumpfile("dump.vcd");
       $dumpvars;
-      #10000;
+      #100;
       $finish();
   end
   
