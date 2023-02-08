@@ -1,9 +1,31 @@
-xcelium.d
-*.ucd
-*.log
-*.history
-*.rpt
-*.ucm
+# cds
+xrun.*
+xcelium*
 *.vcd
-*.key
-*.so
+*.shm
+.simvision
+simvision*
+verilog.dump
+icc*
+imc*
+mdv*
+wave_image
+*.err
+cov_work
+.uvmtclcomm.txt
+*.rpt
+
+# questa
+_info
+*.qdb
+*.qpg
+*.qtl
+_vmake
+
+# other
+*.csv
+.bpad
+*.history
+*.log
+
+
